@@ -1,0 +1,41 @@
+####################################################################
+########################### LOCAL SYSTEM ###########################
+####################################################################
+1) Initialize your EB CLI repository with the eb init command:
+D:\AWS\Elastic_Beanstalk>cd ebdjango
+D:\AWS\Elastic_Beanstalk\ebdjango>eb init -p python-3.6 firstapp
+Select Region if prompted
+
+2) (optional) Run eb init again to configure a default keypair so that you can connect to the EC2 instance running your application with SSH:
+D:\AWS\Elastic_Beanstalk\ebdjango>eb init
+Do you want to set up SSH for your instances?
+(Y/n): y
+
+Select a keypair.
+1) aws-eb
+2) [ Create new KeyPair ]
+(default is 1): 1
+
+3) Create an environment and deploy you application to it with eb create
+D:\AWS\Elastic_Beanstalk\ebdjango>eb create django-env
+
+4) Go to AWS Elastic Beanstalk console -> firstapp -> django-env
+copy the url
+All Applications firstapp django-env Environment ID: e-wkst9jmssa, URL: django-env.vgu9aqum5c.us-east-1.elasticbeanstalk.com
+
+5) Add the the URL in settings.py inside ALLOWED_HOST
+ALLOWED_HOSTS = ['django-env.vgu9aqum5c.us-east-1.elasticbeanstalk.com',]
+
+6) Deploy your application by running eb deploy
+D:\AWS\Elastic_Beanstalk\ebdjango>eb deploy
+Creating application version archive "app-190114_003154".
+Uploading firstapp/app-190114_003154.zip to S3. This may take a while.
+Upload Complete.
+2019-01-13 19:01:57    INFO    Environment update is starting.
+2019-01-13 19:02:01    INFO    Deploying new version to instance(s).
+2019-01-13 19:02:24    INFO    New application version was deployed to running EC2 instances.
+2019-01-13 19:02:24    INFO    Environment update completed successfully.
+
+note: When you run eb deploy, the EB CLI bundles up the contents of your project directory and deploys it to your environment.
+
+7) Open your web site with eb open

@@ -1,0 +1,83 @@
+####################################################################
+########################### LOCAL SYSTEM ###########################
+####################################################################
+1) Install PYTHON 3.6
+2) Install PIP
+
+C:\Windows\system32>python --version
+Python 3.6.5 :: Anaconda, Inc.
+
+C:\Windows\system32>pip --version
+pip 18.1 from d:\users\admin\anaconda3\lib\site-packages\pip (python 3.6)
+
+C:\Windows\system32>
+
+3) Install AWS EB CLI
+C:\Windows\System32> pip install awsebcli --upgrade --user
+
+4) Add the executable path, %USERPROFILE%\AppData\roaming\Python\Python36\scripts, to your PATH environment variable
+
+5) Restart CMD SHELL and verify eb version
+C:\Windows\system32>eb --version
+EB CLI 3.14.9 (Python 3.6.5)
+
+6) Install virtualenv with pip.
+C:\Windows\system32>pip install --user virtualenv
+Collecting virtualenv
+  Downloading https://files.pythonhosted.org/packages/6a/d1/e0d142ce7b8a5c76adbfad01d853bca84c7c0240e35577498e20bc2ade7d/virtualenv-16.2.0-py2.py3-none-any.whl (1.9MB)
+    100% |1.9MB 7.3MB/s
+Requirement already satisfied: setuptools>=18.0.0 in d:\users\admin\anaconda3\lib\site-packages (from virtualenv) (39.1.0)
+Installing collected packages: virtualenv
+Successfully installed virtualenv-16.2.0
+
+7) Create a virtual environment.
+C:\Windows\system32>virtualenv ~/eb-ve
+Using base prefix 'd:\\users\\admin\\anaconda3'
+New python executable in C:\Windows\system32\~\eb-ve\Scripts\python.exe
+Installing setuptools, pip, wheel...
+done.
+
+8) Activate the virtual environment.
+
+cd to C:\Windows\system32\~\eb-ve\Scripts\ (displayed path above in step 7)
+run 'activate'
+
+C:\Windows\System32\~\eb-ve\Scripts>activate
+
+(eb-ve) C:\Windows\System32\~\eb-ve\Scripts>
+
+9) Install DJANGO
+pip install django==2.1.1
+
+(eb-ve) C:\>pip install django==2.1.1
+Collecting django==2.1.1
+  Downloading https://files.pythonhosted.org/packages/ca/7e/fc068d164b32552ae3a8f8d5d0280c083f2e8d553e71ecacc21927564561/Django-2.1.1-py3-none-any.whl (7.3MB)
+    100% |7.3MB 3.9MB/s
+Collecting pytz (from django==2.1.1)
+  Downloading https://files.pythonhosted.org/packages/61/28/1d3920e4d1d50b19bc5d24398a7cd85cc7b9a75a490570d5a30c57622d34/pytz-2018.9-py2.py3-none-any.whl (510kB)
+    100% |512kB 7.3MB/s
+Installing collected packages: pytz, django
+Successfully installed django-2.1.1 pytz-2018.9
+
+(eb-ve) C:\>pip freeze
+Django==2.1.1
+pytz==2018.9
+
+10) Use the django-admin startproject command to create a new Django project named ebdjango:
+(eb-ve) D:\AWS\Elastic_Beanstalk>django-admin startproject ebdjango
+
+(eb-ve) D:\AWS\Elastic_Beanstalk>cd ebdjango
+
+11) Run test
+eb-ve) D:\AWS\Elastic_Beanstalk\ebdjango>python manage.py runserver
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 15 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+January 13, 2019 - 23:56:54
+Django version 2.1.1, using settings 'ebdjango.settings'
+
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.

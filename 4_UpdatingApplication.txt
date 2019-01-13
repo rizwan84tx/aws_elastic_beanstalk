@@ -1,0 +1,17 @@
+ACTIVATE eb-ve
+D:\AWS\Elastic_Beanstalk\ebdjango>C:\Windows\system32\~\eb-ve\Scripts\activate
+
+1) Start app
+(eb-ve) D:\AWS\Elastic_Beanstalk\ebdjango>django-admin startapp firstapp
+
+2) Configure the apps
+
+3) Run migrate, makemigration and migrate
+
+4) Run server and validate in local system(need to allow 127.0.0.1 in ALLOWED_HOST)
+
+5) Deactivate virtualenv
+
+6) Run eb deploy
+
+7) eb open
